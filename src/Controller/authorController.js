@@ -35,7 +35,7 @@ const createAuthor=async function(req,res){
     if(await authorModel.findOne({email})) return res.status(400).send({status:false,message:"Email already Exist"})
 
     const createA=await authorModel.create(data)
-    res.status(201).send({status:true,data:createA})
+   return res.status(201).send({status:true,data:createA})
 
 }
     catch(err){

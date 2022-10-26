@@ -7,7 +7,7 @@ let {
 } = require("../Validation/validator");
 let mongoose = require("mongoose");
 let jwt = require("jsonwebtoken");
-const { query } = require("express");
+// const { query } = require("express");
 
 
 //Creating Blogs=======================================>
@@ -81,8 +81,8 @@ const getAllBlogs = async function (req, res) {
     if (!keyValid(data)) {
       const blog = await blogSchema.find({
         isPublished: true,
-        isDeleted: false,
-      });
+        isDeleted: false})
+
       if (blog.length == 0) {
         return res.status(404).send({
           status: false,
