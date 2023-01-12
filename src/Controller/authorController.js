@@ -50,6 +50,9 @@ let loginAuthor=async function(req,res){
     let body=req.body
     if(!keyValid(body)) return res.status(400).send({status:false,data:"input from body is required"})
     let {email,password}=body
+     if(!isValids(email)) return res.status(400).send({status:false,message:"Don't leave Email Empty"})
+
+if(!isValids(password)) return res.status(400).send({status:false,message:"Don't leave password Empty"})
 
     let validLogin=await authorModel.findOne({email:email,password:password})
     if(!validLogin) return res.status(400).send({status:false,data:"The cridentials are Incorrect"})
@@ -68,6 +71,7 @@ catch(err){
     return  res.status(500).send(err.message)
 }
 }
+
 
 
 
